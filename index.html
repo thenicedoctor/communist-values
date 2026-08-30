@@ -3,62 +3,75 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>8-Axis Political Compass</title>
+  <title>Communist Compass — 8-Axis Political Values Test</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="wrap">
-    <header class="site-header">
-      <h1>8-Axis Political Compass</h1>
-      <p>60 statements. 8 values. Find out where you actually stand.</p>
-    </header>
+  <div class="stripe" aria-hidden="true"></div>
 
-    <div id="intro" class="card">
-      <p>
-        Rate how much you agree or disagree with 60 statements. Your answers are
-        scored across 8 independent axes &mdash; not just left vs. right.
-      </p>
-      <ul class="axis-list">
-        <li><b>Economic</b> &mdash; Equality vs. Free Market</li>
-        <li><b>Authority</b> &mdash; Libertarian vs. Authoritarian</li>
-        <li><b>Social Values</b> &mdash; Progressive vs. Conservative</li>
-        <li><b>Bioethics</b> &mdash; Transhumanist vs. Bioconservative</li>
-        <li><b>Global Outlook</b> &mdash; Internationalist vs. Nationalist</li>
-        <li><b>Ecology</b> &mdash; Environmentalist vs. Productivist</li>
-        <li><b>Religion &amp; State</b> &mdash; Secular vs. Religious</li>
-        <li><b>Foreign Policy</b> &mdash; Pacifist vs. Militarist</li>
-      </ul>
-      <p style="color: var(--text-muted); font-size: 0.85rem;">
-        Takes about 6&ndash;10 minutes. Nothing is saved or sent anywhere &mdash; it all runs in your browser.
-      </p>
-      <button id="start-btn" class="primary">Start the test</button>
+  <header class="site-header">
+    <div class="wrap">
+      <div class="kicker">No. 08 &mdash; A Political Values Instrument</div>
+      <h1>COMMUNIST&nbsp;COMPASS</h1>
+      <p class="subhead">60 statements. 8 axes. Find your tendency.</p>
     </div>
+  </header>
 
-    <div id="quiz" class="card" hidden>
+  <main class="wrap">
+    <section id="intro" class="panel">
+      <p class="lede">
+        Rate how much you agree or disagree with 60 statements. Your answers are
+        scored across eight independent axes &mdash; not just left vs. right &mdash;
+        and matched against twelve named communist and socialist tendencies.
+      </p>
+      <ol class="axis-list">
+        <li><span class="axis-num">01</span><b>Economic</b><span class="axis-vs">Equality &harr; Free Market</span></li>
+        <li><span class="axis-num">02</span><b>Authority</b><span class="axis-vs">Libertarian &harr; Authoritarian</span></li>
+        <li><span class="axis-num">03</span><b>Social Values</b><span class="axis-vs">Progressive &harr; Conservative</span></li>
+        <li><span class="axis-num">04</span><b>Bioethics</b><span class="axis-vs">Transhumanist &harr; Bioconservative</span></li>
+        <li><span class="axis-num">05</span><b>Global Outlook</b><span class="axis-vs">Internationalist &harr; Nationalist</span></li>
+        <li><span class="axis-num">06</span><b>Ecology</b><span class="axis-vs">Environmentalist &harr; Productivist</span></li>
+        <li><span class="axis-num">07</span><b>Religion &amp; State</b><span class="axis-vs">Secular &harr; Religious</span></li>
+        <li><span class="axis-num">08</span><b>Foreign Policy</b><span class="axis-vs">Pacifist &harr; Militarist</span></li>
+      </ol>
+      <p class="fine-print">
+        Takes about 6&ndash;10 minutes. Nothing is saved or transmitted &mdash; it all runs locally in your browser.
+      </p>
+      <button id="start-btn" class="btn-block">Begin &rarr;</button>
+    </section>
+
+    <section id="quiz" class="panel" hidden>
       <div class="progress-bar"><div id="progress-fill" class="progress-fill"></div></div>
       <div id="progress-text" class="progress-text"></div>
       <span id="axis-label" class="axis-label"></span>
       <p id="question-text" class="question-text"></p>
       <div id="likert-group" class="likert-group"></div>
       <div class="nav-row">
-        <button id="prev-btn">Back</button>
-        <button id="next-btn">Skip</button>
+        <button id="prev-btn" class="btn-outline">&larr; Back</button>
+        <button id="next-btn" class="btn-outline">Skip</button>
       </div>
-    </div>
+    </section>
 
-    <div id="results" class="card" hidden>
-      <h2 style="margin-top: 0;">Your Results</h2>
+    <section id="results" class="panel" hidden>
+      <div class="results-eyebrow">Your Results</div>
+      <div id="ideology-match"></div>
       <canvas id="radar-canvas" width="500" height="500"></canvas>
       <div id="axis-bars"></div>
-      <button id="restart-btn" class="primary">Take it again</button>
-    </div>
+      <button id="restart-btn" class="btn-block">Take it again</button>
+    </section>
+  </main>
 
-    <footer class="site-footer">
-      <p>An 8-axis political values test. Open source on <a href="#" id="repo-link">GitHub</a>.</p>
-    </footer>
-  </div>
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>An 8-axis political values test. Open source on <a href="https://github.com/feodorlysyakov-ui/communist-values" target="_blank" rel="noopener">GitHub</a>.</p>
+    </div>
+  </footer>
 
   <script src="questions.js"></script>
+  <script src="ideologies.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

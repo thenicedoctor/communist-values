@@ -135,6 +135,8 @@ function finishQuiz() {
 }
 
 function renderResults(scores) {
+  renderIdeologyMatches(scores);
+
   const barsEl = document.getElementById("axis-bars");
   barsEl.innerHTML = "";
 
@@ -185,6 +187,37 @@ function renderResults(scores) {
   drawRadar(scores);
 }
 
+function renderIdeologyMatches(scores) {
+  const el = document.getElementById("ideology-match");
+  el.innerHTML = "";
+
+  const top = closestIdeologies(scores, 3);
+  const [best, ...rest] = top;
+
+  const primary = document.createElement("div");
+  primary.className = "ideology-primary";
+  primary.innerHTML = `
+    <div class="ideology-eyebrow">Closest tendency</div>
+    <div class="ideology-name">${best.name}</div>
+    <div class="ideology-match-pct">${best.match}% match</div>
+    <p class="ideology-blurb">${best.blurb}</p>
+    <a class="ideology-wiki" href="${best.wiki}" target="_blank" rel="noopener">Read more on Wikipedia &rarr;</a>
+  `;
+  el.appendChild(primary);
+
+  if (rest.length) {
+    const list = document.createElement("div");
+    list.className = "ideology-runners";
+    rest.forEach((ideology) => {
+      const row = document.createElement("div");
+      row.className = "ideology-runner-row";
+      row.innerHTML = `<span><a href="${ideology.wiki}" target="_blank" rel="noopener">${ideology.name}</a></span><span class="ideology-runner-pct">${ideology.match}%</span>`;
+      list.appendChild(row);
+    });
+    el.appendChild(list);
+  }
+}
+
 function drawRadar(scores) {
   const canvas = document.getElementById("radar-canvas");
   const ctx = canvas.getContext("2d");
@@ -201,10 +234,10 @@ function drawRadar(scores) {
   const n = AXES.length;
 
   const styles = getComputedStyle(document.documentElement);
-  const gridColor = styles.getPropertyValue("--grid").trim();
-  const fillColor = styles.getPropertyValue("--accent-fill").trim();
-  const strokeColor = styles.getPropertyValue("--accent").trim();
-  const textColor = styles.getPropertyValue("--text-muted").trim();
+  const gridColor = styles.getPropertyValue("--line-soft").trim();
+  const fillColor = styles.getPropertyValue("--red-fill").trim();
+  const strokeColor = styles.getPropertyValue("--red").trim();
+  const textColor = styles.getPropertyValue("--ink-muted").trim();
 
   ctx.strokeStyle = gridColor;
   ctx.lineWidth = 1;

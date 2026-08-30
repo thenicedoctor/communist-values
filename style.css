@@ -1,26 +1,26 @@
 :root {
-  --bg: #f7f7f5;
-  --surface: #ffffff;
-  --text: #1a1a1a;
-  --text-muted: #6b6b6b;
-  --border: #e2e2df;
-  --grid: #e6e6e3;
-  --accent: #b3423a;
-  --accent-fill: rgba(179, 66, 58, 0.18);
-  --accent-dim: rgba(179, 66, 58, 0.1);
+  --bg: #f1ece0;
+  --panel: #faf7ef;
+  --ink: #171310;
+  --ink-muted: #6b6154;
+  --red: #b3241c;
+  --red-fill: rgba(179, 36, 28, 0.22);
+  --red-ink: #ffffff;
+  --line: #171310;
+  --line-soft: #d8d0bd;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #16161a;
-    --surface: #1f1f24;
-    --text: #f1f1ef;
-    --text-muted: #9a9a9e;
-    --border: #2e2e34;
-    --grid: #33333a;
-    --accent: #e2685f;
-    --accent-fill: rgba(226, 104, 95, 0.22);
-    --accent-dim: rgba(226, 104, 95, 0.14);
+    --bg: #15120f;
+    --panel: #1d1915;
+    --ink: #f1ece0;
+    --ink-muted: #a89e8c;
+    --red: #d33128;
+    --red-fill: rgba(211, 49, 40, 0.28);
+    --red-ink: #17110f;
+    --line: #f1ece0;
+    --line-soft: #3a352c;
   }
 }
 
@@ -28,178 +28,365 @@
   box-sizing: border-box;
 }
 
+html {
+  background: var(--bg);
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, sans-serif;
   background: var(--bg);
-  color: var(--text);
+  color: var(--ink);
   min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  padding: 32px 16px 64px;
 }
 
 .wrap {
-  width: 100%;
-  max-width: 640px;
+  max-width: 620px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
-header.site-header {
-  text-align: center;
-  margin-bottom: 28px;
+h1, h2, .kicker, .axis-label, .btn-block, .btn-outline, .results-eyebrow,
+.ideology-eyebrow, .ideology-name {
+  font-family: "Oswald", "IBM Plex Sans", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
 }
 
-header.site-header h1 {
-  font-size: 1.6rem;
-  margin: 0 0 6px;
+.stripe {
+  height: 10px;
+  background: repeating-linear-gradient(
+    -45deg,
+    var(--red),
+    var(--red) 14px,
+    var(--ink) 14px,
+    var(--ink) 28px
+  );
 }
 
-header.site-header p {
-  color: var(--text-muted);
-  font-size: 0.95rem;
+.site-header {
+  background: var(--ink);
+  color: var(--bg);
+  padding: 40px 0 32px;
+  border-bottom: 4px solid var(--red);
+}
+
+.kicker {
+  color: var(--red);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  margin-bottom: 10px;
+}
+
+.site-header h1 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  margin: 0 0 8px;
+  line-height: 1;
+}
+
+.subhead {
   margin: 0;
+  color: var(--bg);
+  opacity: 0.75;
+  font-size: 0.95rem;
 }
 
-.card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 16px;
+main.wrap {
+  padding-top: 28px;
+  padding-bottom: 40px;
+}
+
+.panel {
+  background: var(--panel);
+  border: 3px solid var(--line);
   padding: 28px;
+  position: relative;
+}
+
+.panel + .panel {
+  margin-top: 24px;
+}
+
+.lede {
+  font-size: 1rem;
+  line-height: 1.55;
+  margin: 0 0 22px;
 }
 
 .axis-list {
-  text-align: left;
-  margin: 20px 0;
-  padding: 0;
   list-style: none;
-  display: grid;
-  gap: 10px;
+  margin: 0 0 22px;
+  padding: 0;
+  border-top: 2px solid var(--line);
 }
 
 .axis-list li {
-  font-size: 0.9rem;
-  color: var(--text-muted);
-  padding: 10px 14px;
-  border: 1px solid var(--border);
-  border-radius: 10px;
+  display: grid;
+  grid-template-columns: 32px auto 1fr;
+  align-items: baseline;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line-soft);
+  font-size: 0.92rem;
+}
+
+.axis-num {
+  font-family: "Oswald", sans-serif;
+  color: var(--red);
+  font-weight: 600;
+  font-size: 0.85rem;
 }
 
 .axis-list b {
-  color: var(--text);
-}
-
-button.primary {
-  background: var(--accent);
-  color: #fff;
-  border: none;
-  border-radius: 10px;
-  padding: 12px 24px;
-  font-size: 1rem;
-  cursor: pointer;
   font-weight: 600;
-  width: 100%;
-  margin-top: 8px;
 }
 
-button.primary:hover {
-  opacity: 0.92;
+.axis-vs {
+  color: var(--ink-muted);
+  text-align: right;
+  font-size: 0.85rem;
+}
+
+.fine-print {
+  color: var(--ink-muted);
+  font-size: 0.82rem;
+  margin: 0 0 22px;
+}
+
+.btn-block {
+  display: block;
+  width: 100%;
+  background: var(--red);
+  color: var(--red-ink);
+  border: 3px solid var(--line);
+  padding: 14px 20px;
+  font-size: 1.02rem;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: 0.03em;
+}
+
+.btn-block:hover {
+  background: var(--ink);
+  color: var(--bg);
+  border-color: var(--ink);
 }
 
 .progress-bar {
-  height: 6px;
-  background: var(--grid);
-  border-radius: 4px;
-  overflow: hidden;
-  margin-bottom: 8px;
+  height: 10px;
+  background: var(--line-soft);
+  border: 2px solid var(--line);
+  margin-bottom: 10px;
 }
 
 .progress-fill {
   height: 100%;
-  background: var(--accent);
+  background: var(--red);
   width: 0%;
   transition: width 0.25s ease;
 }
 
 .progress-text {
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  margin-bottom: 20px;
+  font-size: 0.78rem;
+  color: var(--ink-muted);
+  margin-bottom: 22px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
 }
 
 .axis-label {
   display: inline-block;
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--accent);
-  background: var(--accent-dim);
-  padding: 4px 10px;
-  border-radius: 999px;
-  margin-bottom: 14px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--red-ink);
+  background: var(--red);
+  padding: 5px 12px;
+  margin-bottom: 18px;
 }
 
 .question-text {
-  font-size: 1.2rem;
-  line-height: 1.45;
-  margin: 0 0 24px;
+  font-size: 1.25rem;
+  line-height: 1.4;
+  margin: 0 0 26px;
   min-height: 90px;
+  font-weight: 500;
 }
 
 .likert-group {
   display: grid;
-  gap: 8px;
-  margin-bottom: 20px;
+  gap: 0;
+  margin-bottom: 22px;
+  border-top: 2px solid var(--line);
 }
 
 .likert-btn {
-  padding: 12px 14px;
-  border-radius: 10px;
-  border: 1px solid var(--border);
-  background: var(--surface);
-  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 4px;
+  border: none;
+  border-bottom: 1px solid var(--line-soft);
+  background: transparent;
+  color: var(--ink);
   font-size: 0.95rem;
+  font-family: inherit;
   text-align: left;
   cursor: pointer;
-  transition: border-color 0.15s ease, background 0.15s ease;
+  width: 100%;
+}
+
+.likert-btn::before {
+  content: "";
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--line);
+  flex-shrink: 0;
 }
 
 .likert-btn:hover {
-  border-color: var(--accent);
+  background: var(--line-soft);
 }
 
 .likert-btn.selected {
-  border-color: var(--accent);
-  background: var(--accent-dim);
+  background: var(--ink);
+  color: var(--bg);
   font-weight: 600;
+}
+
+.likert-btn.selected::before {
+  background: var(--red);
+  border-color: var(--red);
 }
 
 .nav-row {
   display: flex;
-  justify-content: space-between;
   gap: 10px;
 }
 
-.nav-row button {
+.btn-outline {
   flex: 1;
-  padding: 10px;
-  border-radius: 10px;
-  border: 1px solid var(--border);
-  background: var(--surface);
-  color: var(--text);
+  padding: 11px;
+  border: 2px solid var(--line);
+  background: transparent;
+  color: var(--ink);
   cursor: pointer;
-  font-size: 0.9rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
 }
 
-.nav-row button:disabled {
-  opacity: 0.4;
+.btn-outline:hover:not(:disabled) {
+  background: var(--ink);
+  color: var(--bg);
+}
+
+.btn-outline:disabled {
+  opacity: 0.35;
   cursor: not-allowed;
+}
+
+.results-eyebrow {
+  color: var(--red);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  margin-bottom: 14px;
+}
+
+.ideology-primary {
+  border: 2px solid var(--line);
+  padding: 20px;
+  margin-bottom: 18px;
+  background: var(--ink);
+  color: var(--bg);
+}
+
+.ideology-eyebrow {
+  font-size: 0.68rem;
+  color: var(--red);
+  letter-spacing: 0.12em;
+  margin-bottom: 6px;
+}
+
+.ideology-name {
+  font-size: 1.7rem;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 6px;
+}
+
+.ideology-match-pct {
+  font-family: "Oswald", sans-serif;
+  color: var(--red);
+  font-weight: 600;
+  font-size: 0.85rem;
+  margin-bottom: 12px;
+  letter-spacing: 0.04em;
+}
+
+.ideology-blurb {
+  margin: 0 0 12px;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  opacity: 0.9;
+}
+
+.ideology-wiki {
+  display: inline-block;
+  color: var(--red);
+  font-family: "Oswald", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-bottom: 1px solid var(--red);
+}
+
+.ideology-wiki:hover {
+  color: var(--bg);
+  border-bottom-color: var(--bg);
+}
+
+.ideology-runners {
+  border-top: 1px solid var(--line-soft);
+  margin-bottom: 24px;
+}
+
+.ideology-runner-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--line-soft);
+  font-size: 0.85rem;
+  color: var(--ink-muted);
+}
+
+.ideology-runner-row span:last-child {
+  color: var(--red);
+  font-weight: 600;
+}
+
+.ideology-runner-row a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.ideology-runner-row a:hover {
+  color: var(--red);
+  border-bottom-color: var(--red);
 }
 
 #radar-canvas {
   width: 100%;
   aspect-ratio: 1 / 1;
   display: block;
-  margin: 8px auto 24px;
+  margin: 4px auto 26px;
 }
 
 .axis-row {
@@ -209,13 +396,13 @@ button.primary:hover {
 .axis-row-header {
   display: flex;
   justify-content: space-between;
-  font-size: 0.88rem;
-  margin-bottom: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 7px;
 }
 
 .axis-result-label {
-  color: var(--accent);
-  font-weight: 600;
+  color: var(--red);
 }
 
 .axis-track-inner {
@@ -225,10 +412,12 @@ button.primary:hover {
 }
 
 .axis-tag {
-  font-size: 0.72rem;
-  color: var(--text-muted);
+  font-size: 0.68rem;
+  color: var(--ink-muted);
   width: 78px;
   flex-shrink: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
 }
 
 .axis-tag-right {
@@ -238,9 +427,9 @@ button.primary:hover {
 .axis-bar {
   position: relative;
   flex: 1;
-  height: 6px;
-  background: var(--grid);
-  border-radius: 4px;
+  height: 8px;
+  background: var(--line-soft);
+  border: 1px solid var(--line);
 }
 
 .axis-marker {
@@ -248,19 +437,23 @@ button.primary:hover {
   top: 50%;
   width: 12px;
   height: 12px;
-  border-radius: 50%;
-  background: var(--accent);
-  transform: translateY(-50%);
-  border: 2px solid var(--surface);
+  background: var(--red);
+  border: 2px solid var(--line);
+  transform: translate(0, -50%);
 }
 
-footer.site-footer {
+.site-footer {
+  border-top: 3px solid var(--line);
+  padding: 20px 0 40px;
+}
+
+.site-footer p {
   text-align: center;
-  color: var(--text-muted);
+  color: var(--ink-muted);
   font-size: 0.78rem;
-  margin-top: 28px;
+  margin: 0;
 }
 
-footer.site-footer a {
-  color: var(--accent);
+.site-footer a {
+  color: var(--red);
 }
