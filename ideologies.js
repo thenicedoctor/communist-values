@@ -77,6 +77,54 @@ const IDEOLOGIES = [
     blurb: "Gradual, democratic transformation toward public ownership and strong welfare provision, working within existing electoral institutions rather than revolution.",
     wiki: "https://en.wikipedia.org/wiki/Democratic_socialism",
   },
+  {
+    name: "National Bolshevism",
+    vector: { econ: -70, auth: 55, global: 55, peace: 35 },
+    blurb: "A syncretic fusion of revolutionary nationalism and anti-capitalist economics, uniting radical nationalists and communists against liberal capitalism and Western hegemony.",
+    wiki: "https://en.wikipedia.org/wiki/National_Bolshevism",
+  },
+  {
+    name: "Hoxhaism",
+    vector: { econ: -85, auth: 70, global: 30, peace: 20 },
+    blurb: "Uncompromising anti-revisionist Marxism–Leninism that rejects both Soviet and Maoist deviations, pursuing rigid party orthodoxy and national self-isolation to preserve ideological purity.",
+    wiki: "https://en.wikipedia.org/wiki/Hoxhaism",
+  },
+  {
+    name: "Bordigism",
+    vector: { econ: -90, auth: -15, global: -70, peace: -15 },
+    blurb: "Rigidly orthodox left communism that rejects parliamentary participation, trade unionism, and popular fronts, insisting on an unwavering international communist party as the sole vehicle of revolution.",
+    wiki: "https://en.wikipedia.org/wiki/Amadeo_Bordiga",
+  },
+  {
+    name: "Dengism",
+    vector: { econ: -20, auth: 55, global: 10, peace: -5 },
+    blurb: "Market-oriented economic reform under continued one-party rule, prioritizing pragmatic development and global economic integration over revolutionary orthodoxy.",
+    wiki: "https://en.wikipedia.org/wiki/Deng_Xiaoping_Theory",
+  },
+  {
+    name: "Maoism–Third Worldism",
+    vector: { econ: -75, auth: 30, global: -55, peace: 40 },
+    blurb: "Reframes the global class struggle as a conflict between an imperialist Global North and an exploited Global South, viewing Third World peasantries rather than First World workers as the revolutionary vanguard.",
+    wiki: "https://en.wikipedia.org/wiki/Maoism%E2%80%93Third_Worldism",
+  },
+  {
+    name: "Anarcho-Syndicalism",
+    vector: { econ: -85, auth: -85, global: -55, peace: -20 },
+    blurb: "Organizes workers into revolutionary trade unions that seize direct control of production through general strikes and direct action, replacing both the state and capitalism with federated worker self-management.",
+    wiki: "https://en.wikipedia.org/wiki/Anarcho-syndicalism",
+  },
+  {
+    name: "Autonomism",
+    vector: { econ: -75, auth: -60, global: -50, peace: -30 },
+    blurb: "Centers spontaneous, self-organized working-class struggle outside official unions and parties, viewing autonomous grassroots refusal of work as the engine of revolutionary change.",
+    wiki: "https://en.wikipedia.org/wiki/Autonomism",
+  },
+  {
+    name: "Christian Communism",
+    vector: { econ: -65, auth: -20, global: -30, peace: -35 },
+    blurb: "Applies Christian ethical teachings on communal ownership and solidarity with the poor to justify communist economic organization and active resistance to oppressive structures.",
+    wiki: "https://en.wikipedia.org/wiki/Christian_communism",
+  },
 ];
 
 function closestIdeologies(scores, count = 3) {
