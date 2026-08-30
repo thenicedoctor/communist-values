@@ -1,8 +1,10 @@
-# 8-Axis Political Compass
+# Communist Compass
+
+**Take the test: https://thenicedoctor.github.io/communist-values/**
 
 A single-page, no-build political values test. 60 statements, rated on a 5-point
 agree/disagree scale, scored across 8 independent axes instead of a single
-left/right line:
+left/right line, then matched against 12 named communist and socialist tendencies:
 
 | Axis | Left pole | Right pole |
 |---|---|---|
