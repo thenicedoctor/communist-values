@@ -17,7 +17,7 @@ left/right line, then matched against 12 named communist and socialist tendencie
 | Religion & State | Secular | Religious |
 | Foreign Policy | Pacifist | Militarist |
 
-Everything runs client-side — no data is collected or sent anywhere.
+Everything runs client-side, therefore no data is collected or sent anywhere.
 
 ## Running locally
 
