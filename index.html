@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>8-Axis Political Compass</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="wrap">
+    <header class="site-header">
+      <h1>8-Axis Political Compass</h1>
+      <p>60 statements. 8 values. Find out where you actually stand.</p>
+    </header>
+
+    <div id="intro" class="card">
+      <p>
+        Rate how much you agree or disagree with 60 statements. Your answers are
+        scored across 8 independent axes &mdash; not just left vs. right.
+      </p>
+      <ul class="axis-list">
+        <li><b>Economic</b> &mdash; Equality vs. Free Market</li>
+        <li><b>Authority</b> &mdash; Libertarian vs. Authoritarian</li>
+        <li><b>Social Values</b> &mdash; Progressive vs. Conservative</li>
+        <li><b>Bioethics</b> &mdash; Transhumanist vs. Bioconservative</li>
+        <li><b>Global Outlook</b> &mdash; Internationalist vs. Nationalist</li>
+        <li><b>Ecology</b> &mdash; Environmentalist vs. Productivist</li>
+        <li><b>Religion &amp; State</b> &mdash; Secular vs. Religious</li>
+        <li><b>Foreign Policy</b> &mdash; Pacifist vs. Militarist</li>
+      </ul>
+      <p style="color: var(--text-muted); font-size: 0.85rem;">
+        Takes about 6&ndash;10 minutes. Nothing is saved or sent anywhere &mdash; it all runs in your browser.
+      </p>
+      <button id="start-btn" class="primary">Start the test</button>
+    </div>
+
+    <div id="quiz" class="card" hidden>
+      <div class="progress-bar"><div id="progress-fill" class="progress-fill"></div></div>
+      <div id="progress-text" class="progress-text"></div>
+      <span id="axis-label" class="axis-label"></span>
+      <p id="question-text" class="question-text"></p>
+      <div id="likert-group" class="likert-group"></div>
+      <div class="nav-row">
+        <button id="prev-btn">Back</button>
+        <button id="next-btn">Skip</button>
+      </div>
+    </div>
+
+    <div id="results" class="card" hidden>
+      <h2 style="margin-top: 0;">Your Results</h2>
+      <canvas id="radar-canvas" width="500" height="500"></canvas>
+      <div id="axis-bars"></div>
+      <button id="restart-btn" class="primary">Take it again</button>
+    </div>
+
+    <footer class="site-footer">
+      <p>An 8-axis political values test. Open source on <a href="#" id="repo-link">GitHub</a>.</p>
+    </footer>
+  </div>
+
+  <script src="questions.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
