@@ -35,3 +35,8 @@ Then open `http://localhost:8000`.
 - `style.css` — styling, light/dark theme
 - `questions.js` — the 60 statements and their axis/direction metadata
 - `app.js` — quiz flow, scoring, and radar chart rendering
+
+- ## Indexing Process
+
+- Currently, we are working to index this site. Once it will finish, we will notify you guys. Stay updated with the repository.
+- 
