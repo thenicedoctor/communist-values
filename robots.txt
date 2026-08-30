@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://feodorlysyakov-ui.github.io/communist-values/sitemap.xml
+Sitemap: https://thenicedoctor.github.io/communist-values/sitemap.xml
